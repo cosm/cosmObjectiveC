@@ -146,7 +146,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>COSMDatastreamModel is the representation of a datastream on Cosm. It can fetched, saved, be deleted, subscribed and unsubscribed from Cosm.</p>
+						<p>COSMDatastreamModel is the representation of a datastream on Cosm. It can fetched, saved, deleted, subscribed and unsubscribed to/from Cosm.</p>
 					</div>
 					
 					
@@ -180,7 +180,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/datapointCollection">&nbsp;&nbsp;datapointCollection</a></code>
-		<span class="tooltip"><p>Container for the datastreams datapoint</p></span>
+		<span class="tooltip"><p>Container for the datastream&rsquo;s datapoint</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -195,7 +195,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fetch">&ndash;&nbsp;fetch</a></code>
-		<span class="tooltip"><p>Fetches the datastream from Cosm. Before fetching the datastream much have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p></span>
+		<span class="tooltip"><p>Fetches the datastream from Cosm. It must have an <code>id</code> key in its info dictionary and have its <a href="#//api/name/feedId">feedId</a> set before fetching the datastream. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p></span>
 	</span>
 	
 	
@@ -209,14 +209,14 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/deleteFromCosm">&ndash;&nbsp;deleteFromCosm</a></code>
-		<span class="tooltip"><p>Deletes the datastream from Cosm. Before deleting the datastream must have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set.The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol and the models flag isDeletedFromCosm will be set to true.</p></span>
+		<span class="tooltip"><p>Deletes the datastream from Cosm. It must have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set before deleting the datastream. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol and the model&rsquo;s flag isDeletedFromCosm will be set to true.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isNew">&nbsp;&nbsp;isNew</a></code>
-		<span class="tooltip"><p>Determins, or is a flag which indicates, if the model exsits on Cosm.</p></span>
+		<span class="tooltip"><p>Determines or indicates if the model exists on Cosm.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -240,7 +240,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Container for the datastreams datapoint</p>
+		<p>Container for the datastream&rsquo;s datapoint</p>
 	</div>		
 	
 	
@@ -313,7 +313,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Determins, or is a flag which indicates, if the model exsits on Cosm.</p>
+		<p>Determines or indicates if the model exists on Cosm.</p>
 	</div>		
 	
 	
@@ -328,7 +328,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Used internally to decide on POST or PUT request when save is called for feeds and datastreams.</p>
+		<p>Also used internally to decide whether to use a POST or PUT request when save is called for feeds and datastreams.</p>
 	</div>
 	
 	
@@ -362,7 +362,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Deletes the datastream from Cosm. Before deleting the datastream must have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set.The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol and the models flag isDeletedFromCosm will be set to true.</p>
+		<p>Deletes the datastream from Cosm. It must have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set before deleting the datastream. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol and the model&rsquo;s flag isDeletedFromCosm will be set to true.</p>
 	</div>		
 	
 	
@@ -405,7 +405,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Fetches the datastream from Cosm. Before fetching the datastream much have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p>
+		<p>Fetches the datastream from Cosm. It must have an <code>id</code> key in its info dictionary and have its <a href="#//api/name/feedId">feedId</a> set before fetching the datastream. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p>
 	</div>		
 	
 	

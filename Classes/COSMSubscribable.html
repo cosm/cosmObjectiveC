@@ -137,7 +137,7 @@
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>COSMSubscribable, used by <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> and <a href="../Classes/COSMDatastreamModel.html">COSMDatastreamModel</a>, is a base class which allows the model to <a href="#//api/name/subscribe">subscribe</a> to live updates from Cosm via a web socket connection.</p>
 
-<p>When a <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> or <a href="../Classes/COSMDatastreamModel.html">COSMDatastreamModel</a> is subscribed Cosm its own data and child collections we be repopulated with data whenever they are change on Cosm. When a model recieves an update triggered by Cosm its <a href="#//api/name/delegate">delegate</a> will be notified by the <code>modelUpdatedViaSubscription:</code> method.</p><div class="warning"><p><strong>Warning:</strong> <em>Important:</em> Web socket connection are not allow on many mobile networks providers. If the device is running on a mobile connection and attempts to <a href="#//api/name/subscribe">subscribe</a>, the <code>modelDidUnsubscribe:withError:</code> may be called imeditaly or after a few seconds.</p></div>
+<p>When a <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> or <a href="../Classes/COSMDatastreamModel.html">COSMDatastreamModel</a> is subscribed Cosm its own data and child collections we be repopulated with data whenever this data changes on Cosm. When a model receives an update triggered by Cosm its <a href="#//api/name/delegate">delegate</a> will be notified by the <code>modelUpdatedViaSubscription:</code> method.</p><div class="warning"><p><strong>Warning:</strong> <em>Important:</em> Web socket connections are not allowed on many mobile networks providers. If the device is running on a mobile connection and attempts to <a href="#//api/name/subscribe">subscribe</a>, the <code>modelDidUnsubscribe:withError:</code> may be called immediaely or after a few seconds.</p></div>
 					</div>
 					
 					
@@ -156,7 +156,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
-		<span class="tooltip"><p>Delegate object which will be notified subscription, unsubscription and updates to a model which happened via a web socket connection to Cosm.</p></span>
+		<span class="tooltip"><p>Delegate object which will be notified of subscription, unsubscription and updates to a model which happened via a web socket connection to Cosm.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -171,14 +171,14 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/subscribe">&ndash;&nbsp;subscribe</a></code>
-		<span class="tooltip"><p>Subscribes the model to Cosm. If attempt to subscribe fails a <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol. Once a model is subscribe it will be updated automatically when the relevant feed or datastream is updated on Cosm</p></span>
+		<span class="tooltip"><p>Subscribes the model to Cosm. If an attempt to subscribe fails a <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol. Once a model is subscribed it will be updated automatically when the relevant feed or datastream is updated on Cosm.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/unsubscribe">&ndash;&nbsp;unsubscribe</a></code>
-		<span class="tooltip"><p>Unsubscribes the model to Cosm. If attempt to un<a href="#//api/name/subscribe">subscribe</a>  was intentional and happened without error the <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol but the error object will be <code>nil</code>.</p></span>
+		<span class="tooltip"><p>Unsubscribes the model to Cosm. If an attempt to un<a href="#//api/name/subscribe">subscribe</a> was intentional and happened without error then the <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol but the error object will be <code>nil</code>.</p></span>
 	</span>
 	
 	
@@ -202,7 +202,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Delegate object which will be notified subscription, unsubscription and updates to a model which happened via a web socket connection to Cosm.</p>
+		<p>Delegate object which will be notified of subscription, unsubscription and updates to a model which happened via a web socket connection to Cosm.</p>
 	</div>		
 	
 	
@@ -246,7 +246,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Subscribes the model to Cosm. If attempt to subscribe fails a <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol. Once a model is subscribe it will be updated automatically when the relevant feed or datastream is updated on Cosm</p>
+		<p>Subscribes the model to Cosm. If an attempt to subscribe fails a <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol. Once a model is subscribed it will be updated automatically when the relevant feed or datastream is updated on Cosm.</p>
 	</div>		
 	
 	
@@ -289,7 +289,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Unsubscribes the model to Cosm. If attempt to un<a href="#//api/name/subscribe">subscribe</a>  was intentional and happened without error the <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol but the error object will be <code>nil</code>.</p>
+		<p>Unsubscribes the model to Cosm. If an attempt to un<a href="#//api/name/subscribe">subscribe</a> was intentional and happened without error then the <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol but the error object will be <code>nil</code>.</p>
 	</div>		
 	
 	

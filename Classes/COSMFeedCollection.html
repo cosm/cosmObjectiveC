@@ -146,7 +146,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>COSMFeedCollection collection contains a mutable array of COSMFeedModels. It can also be used to <a href="#//api/name/fetch">fetch</a> mutliple <a href="#//api/name/feeds">feeds</a> in one request. It can also have parameters added to it (via <a href="../Classes/COSMRequestable.html">COSMRequestable</a>) so it may filter / search the <a href="#//api/name/feeds">feeds</a> requested.</p>
+						<p>COSMFeedCollection contains a mutable array of COSMFeedModels. It can also be used to <a href="#//api/name/fetch">fetch</a> mutliple <a href="#//api/name/feeds">feeds</a> in a single request. Feed filters may be added via COSMRequestable&rsquo;s <code>useParameter:withValue</code></p>
 					</div>
 					
 					
@@ -165,7 +165,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/info">&nbsp;&nbsp;info</a></code>
-		<span class="tooltip"><p>Mutable dictionary of information, if any, about the collection.</p></span>
+		<span class="tooltip"><p>Mutable dictionary of information about the collection.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -195,7 +195,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/api">&nbsp;&nbsp;api</a></code>
-		<span class="tooltip"><p>The model&rsquo;s reference to a <a href="../Classes/COSMAPI.html">COSMAPI</a> object which should contain an API key to be used for any request operations.</p></span>
+		<span class="tooltip"><p>The model&rsquo;s reference to a <a href="../Classes/COSMAPI.html">COSMAPI</a> object containing an API key to be used for any request operations.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -209,14 +209,14 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fetch">&ndash;&nbsp;fetch</a></code>
-		<span class="tooltip"><p>Fetchs <a href="#//api/name/feeds">feeds</a> Cosm. Parameters for the fetch can be set using the <code>useParameter:withValue:</code> The result of the operation will be notified collections <a href="#//api/name/delegate">delegate</a> using the <a href="../Protocols/COSMDatapointCollectionDelegate.html">COSMDatapointCollectionDelegate</a> protocol.</p></span>
+		<span class="tooltip"><p>Fetches <a href="#//api/name/feeds">feeds</a> from Cosm. Parameters for the fetch can be set using the <code>useParameter:withValue:</code> The result of the operation will be notified to the collections <a href="#//api/name/delegate">delegate</a> using the <a href="../Protocols/COSMDatapointCollectionDelegate.html">COSMDatapointCollectionDelegate</a> protocol.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/removeDeleted">&ndash;&nbsp;removeDeleted</a></code>
-		<span class="tooltip"><p>Convience method for removing any COSMFeedModels which have been deleted from Cosm from the collection.</p></span>
+		<span class="tooltip"><p>Convenience method to remove COSMFeedModels deleted on Cosm from the collection</p></span>
 	</span>
 	
 	
@@ -240,7 +240,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The model&rsquo;s reference to a <a href="../Classes/COSMAPI.html">COSMAPI</a> object which should contain an API key to be used for any request operations.</p>
+		<p>The model&rsquo;s reference to a <a href="../Classes/COSMAPI.html">COSMAPI</a> object containing an API key to be used for any request operations.</p>
 	</div>		
 	
 	
@@ -255,7 +255,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If an <a href="../Classes/COSMAPI.html">COSMAPI</a> object is not provided directy, the model will use COSMAPI&rsquo;s defaultAPI object.</p>
+		<p>If a <a href="../Classes/COSMAPI.html">COSMAPI</a> object is not provided directy the model will use COSMAPI&rsquo;s defaultAPI object.</p>
 	</div>
 	
 	
@@ -347,7 +347,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Mutable dictionary of information, if any, about the collection.</p>
+		<p>Mutable dictionary of information about the collection.</p>
 	</div>		
 	
 	
@@ -362,7 +362,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The info dictionary contains an NSDictionary representation of collection minus the <a href="#//api/name/feeds">feeds</a> themself. The <a href="#//api/name/feeds">feeds</a> will have been parsed into the datapoints property.</p>
+		<p>The info dictionary contains an NSDictionary representation of the collection minus the <a href="#//api/name/feeds">feeds</a> themselves. The <a href="#//api/name/feeds">feeds</a> will have been parsed into the datapoints property.</p>
 	</div>
 	
 	
@@ -396,7 +396,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Fetchs <a href="#//api/name/feeds">feeds</a> Cosm. Parameters for the fetch can be set using the <code>useParameter:withValue:</code> The result of the operation will be notified collections <a href="#//api/name/delegate">delegate</a> using the <a href="../Protocols/COSMDatapointCollectionDelegate.html">COSMDatapointCollectionDelegate</a> protocol.</p>
+		<p>Fetches <a href="#//api/name/feeds">feeds</a> from Cosm. Parameters for the fetch can be set using the <code>useParameter:withValue:</code> The result of the operation will be notified to the collections <a href="#//api/name/delegate">delegate</a> using the <a href="../Protocols/COSMDatapointCollectionDelegate.html">COSMDatapointCollectionDelegate</a> protocol.</p>
 	</div>		
 	
 	
@@ -439,7 +439,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Convience method for removing any COSMFeedModels which have been deleted from Cosm from the collection.</p>
+		<p>Convenience method to remove COSMFeedModels deleted on Cosm from the collection</p>
 	</div>		
 	
 	

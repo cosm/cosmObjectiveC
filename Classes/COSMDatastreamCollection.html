@@ -125,7 +125,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>COSMDatastreamCollection collection contains a mutable array of COSMDatapointModels.</p>
+						<p>COSMDatastreamCollection contains a mutable array of COSMDatapointModels.</p>
 					</div>
 					
 					
@@ -144,14 +144,14 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/info">&nbsp;&nbsp;info</a></code>
-		<span class="tooltip"><p>Mutable dictionary of information, if any, about the collection.</p></span>
+		<span class="tooltip"><p>Mutable dictionary of information about the collection.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/feedId">&nbsp;&nbsp;feedId</a></code>
-		<span class="tooltip"><p>Cosm&rsquo;s id for this collection of datastream&rsquo;s parent feed.</p></span>
+		<span class="tooltip"><p>Cosm&rsquo;s id for the parent feed of this <a href="#//api/name/datastreams">datastreams</a> collection.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -224,7 +224,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Cosm&rsquo;s id for this collection of datastream&rsquo;s parent feed.</p>
+		<p>Cosm&rsquo;s id for the parent feed of this <a href="#//api/name/datastreams">datastreams</a> collection.</p>
 	</div>		
 	
 	
@@ -239,7 +239,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>When initalising a COSMDatastreamCollection directly the feedId is require inorder for the <a href="../Classes/COSMDatapointCollection.html">COSMDatapointCollection</a> to access the correct resource for Cosm&rsquo;s webservice.</p>
+		<p>When initalising a COSMDatastreamCollection directly the feedId is required in order for the <a href="../Classes/COSMDatapointCollection.html">COSMDatapointCollection</a> to access the correct resource for Cosm&rsquo;s web service.</p>
 	</div>
 	
 	
@@ -263,7 +263,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Mutable dictionary of information, if any, about the collection.</p>
+		<p>Mutable dictionary of information about the collection.</p>
 	</div>		
 	
 	
@@ -278,7 +278,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The info dictionary contains an NSDictionary representation of collection minus the <a href="#//api/name/datastreams">datastreams</a> themself. The datapoints will have be parsed  into the <a href="#//api/name/datastreams">datastreams</a> property.</p>
+		<p>The info dictionary contains an NSDictionary representation of the collection minus the <a href="#//api/name/datastreams">datastreams</a>. The datapoints will have be parsed  into the <a href="#//api/name/datastreams">datastreams</a> property.</p>
 	</div>
 	
 	
