@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -51,17 +53,9 @@
 	
 	<option value="//api/name/fetch">&nbsp;&nbsp;&nbsp;&nbsp;- fetch</option>
 	
-	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
-	
 	<option value="//api/name/isNew">&nbsp;&nbsp;&nbsp;&nbsp;- isNew</option>
 	
-	<option value="//api/name/parse:">&nbsp;&nbsp;&nbsp;&nbsp;- parse:</option>
-	
-	<option value="//api/name/resourceURLString">&nbsp;&nbsp;&nbsp;&nbsp;- resourceURLString</option>
-	
 	<option value="//api/name/save">&nbsp;&nbsp;&nbsp;&nbsp;- save</option>
-	
-	<option value="//api/name/saveableInfoWithNewDatastreamsOnly:">&nbsp;&nbsp;&nbsp;&nbsp;- saveableInfoWithNewDatastreamsOnly:</option>
 	
 	
 	
@@ -72,6 +66,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -79,7 +75,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Data">Data</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Synchronization">Synchronization</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Synchronisation">Synchronisation</a></span></li>
 	
 </ul></li>
 
@@ -103,17 +99,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetch">fetch</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isNew">isNew</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parse:">parse:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resourceURLString">resourceURLString</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save">save</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveableInfoWithNewDatastreamsOnly:">saveableInfoWithNewDatastreamsOnly:</a></span></li>
 	
 </ul></li>
 
@@ -149,6 +137,14 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>COSMFeedModel is the representation of a feed on Cosm. It can fetched, saved, be deleted, subscribed and unsubscribed from Cosm.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -163,7 +159,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/datastreamCollection">&nbsp;&nbsp;datastreamCollection</a></code>
-		
+		<span class="tooltip"><p>Container for the feeds datastreams</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -171,45 +167,28 @@
 						</ul>
 						
 						
-						<a title="Synchronization" name="task_Synchronization"></a>
-						<h3 class="subsubtitle task-title">Synchronization</h3>
+						<a title="Synchronisation" name="task_Synchronisation"></a>
+						<h3 class="subsubtitle task-title">Synchronisation</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fetch">&ndash;&nbsp;fetch</a></code>
-		
+		<span class="tooltip"><p>Fetches the feed from Cosm. Before fetching it must have an <code>id</code> key in it&rsquo;s info dictionary. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/save">&ndash;&nbsp;save</a></code>
-		
+		<span class="tooltip"><p>Saves the feed to Cosm. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/deleteFromCOSM">&ndash;&nbsp;deleteFromCOSM</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/parse:">&ndash;&nbsp;parse:</a></code>
-		<span class="tooltip"><p>Parses any responce JSON into models <a href="#//api/name/info">info</a> object and or any collection the model has.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/saveableInfoWithNewDatastreamsOnly:">&ndash;&nbsp;saveableInfoWithNewDatastreamsOnly:</a></code>
-		<span class="tooltip"><p>returns the info dictionary without any references
-to any datastream that are not mark with <code>isNew==true</code>
-this is to prevent the model saving any datastreams which
-have not been created (and may have been updated post<a href="#//api/name/fetch">fetch</a> online)</p></span>
+		<span class="tooltip"><p>Deletes the feed from Cosm. Before deleting the datastream must have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s feedId set.The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol and the models flag isDeletedFromCosm will be set to true.</p></span>
 	</span>
 	
 	
@@ -224,21 +203,7 @@ have not been created (and may have been updated post<a href="#//api/name/fetch"
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isNew">&ndash;&nbsp;isNew</a></code>
-		<span class="tooltip"><p>Determins if the model exsits on Cosm. Normally by identifiying if it has an id.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/resourceURLString">&ndash;&nbsp;resourceURLString</a></code>
-		<span class="tooltip"><p>Returns the model&rsquo;s resource URL path.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
-		
+		<span class="tooltip"><p>Determins, or is a flag which indicates, if the model exsits on Cosm.</p></span>
 	</span>
 	
 	
@@ -260,178 +225,13 @@ have not been created (and may have been updated post<a href="#//api/name/fetch"
 	<h3 class="subsubtitle method-title">datastreamCollection</h3>
 	
 	
-</div>
-						
-					</div>
-					
-					
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/deleteFromCOSM" title="deleteFromCOSM"></a>
-	<h3 class="subsubtitle method-title">deleteFromCOSM</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/fetch" title="fetch"></a>
-	<h3 class="subsubtitle method-title">fetch</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/init" title="init"></a>
-	<h3 class="subsubtitle method-title">init</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/isNew" title="isNew"></a>
-	<h3 class="subsubtitle method-title">isNew</h3>
-	
-	
 	
 	<div class="method-subsection brief-description">
-		<p>Determins if the model exsits on Cosm. Normally by identifiying if it has an id.</p>
+		<p>Container for the feeds datastreams</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (BOOL)isNew</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Used internally to decide on POST or PUT request when save is called.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">COSMModel.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/parse:" title="parse:"></a>
-	<h3 class="subsubtitle method-title">parse:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Parses any responce JSON into models <a href="#//api/name/info">info</a> object and or any collection the model has.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (void)parse:(id)<em>JSON</em></code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Should not need to be called directly. Used internally to parse responces from fetch, save, delete and subscribe requests.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">COSMModel.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/resourceURLString" title="resourceURLString"></a>
-	<h3 class="subsubtitle method-title">resourceURLString</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns the model&rsquo;s resource URL path.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (NSString *)resourceURLString</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Should not need to be called directly. Used internally to create the request URL string for any fetch, save, delete and subscribe requests.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">COSMModel.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/save" title="save"></a>
-	<h3 class="subsubtitle method-title">save</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/saveableInfoWithNewDatastreamsOnly:" title="saveableInfoWithNewDatastreamsOnly:"></a>
-	<h3 class="subsubtitle method-title">saveableInfoWithNewDatastreamsOnly:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>returns the info dictionary without any references
-to any datastream that are not mark with <code>isNew==true</code>
-this is to prevent the model saving any datastreams which
-have not been created (and may have been updated post<a href="#//api/name/fetch">fetch</a> online)</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (NSMutableDictionary *)saveableInfoWithNewDatastreamsOnly:(BOOL)<em>newOnly</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) COSMDatastreamCollection *datastreamCollection</code></div>
 	
 	
 	
@@ -457,6 +257,184 @@ have not been created (and may have been updated post<a href="#//api/name/fetch"
 					</div>
 					
 					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/deleteFromCOSM" title="deleteFromCOSM"></a>
+	<h3 class="subsubtitle method-title">deleteFromCOSM</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Deletes the feed from Cosm. Before deleting the datastream must have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s feedId set.The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol and the models flag isDeletedFromCosm will be set to true.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)deleteFromCOSM</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Protocols/COSMModelDelegate.html">COSMModelDelegate</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMFeedModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fetch" title="fetch"></a>
+	<h3 class="subsubtitle method-title">fetch</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Fetches the feed from Cosm. Before fetching it must have an <code>id</code> key in it&rsquo;s info dictionary. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)fetch</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Protocols/COSMModelDelegate.html">COSMModelDelegate</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMFeedModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isNew" title="isNew"></a>
+	<h3 class="subsubtitle method-title">isNew</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Determins, or is a flag which indicates, if the model exsits on Cosm.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)isNew</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Used internally to decide on POST or PUT request when save is called for feeds and datastreams.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/save" title="save"></a>
+	<h3 class="subsubtitle method-title">save</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Saves the feed to Cosm. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)save</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Protocols/COSMModelDelegate.html">COSMModelDelegate</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMFeedModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -467,7 +445,7 @@ have not been created (and may have been updated post<a href="#//api/name/fetch"
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 COSM Ltd.. All rights reserved. (Last updated: 2013-03-01)</span><br />
+						<p><span class="copyright">&copy; 2013 COSM Ltd.. All rights reserved. (Last updated: 2013-03-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

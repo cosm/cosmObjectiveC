@@ -44,6 +44,8 @@
 	
 	<option value="//api/name/feedId">&nbsp;&nbsp;&nbsp;&nbsp;feedId</option>
 	
+	<option value="//api/name/isNew">&nbsp;&nbsp;&nbsp;&nbsp;isNew</option>
+	
 	
 	
 	
@@ -51,19 +53,11 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/deleteFromCosm">&nbsp;&nbsp;&nbsp;&nbsp;- deleteFromCosm</option>
+	
 	<option value="//api/name/fetch">&nbsp;&nbsp;&nbsp;&nbsp;- fetch</option>
 	
-	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
-	
-	<option value="//api/name/isNew">&nbsp;&nbsp;&nbsp;&nbsp;- isNew</option>
-	
-	<option value="//api/name/parse:">&nbsp;&nbsp;&nbsp;&nbsp;- parse:</option>
-	
-	<option value="//api/name/resourceURLString">&nbsp;&nbsp;&nbsp;&nbsp;- resourceURLString</option>
-	
 	<option value="//api/name/save">&nbsp;&nbsp;&nbsp;&nbsp;- save</option>
-	
-	<option value="//api/name/saveableInfo">&nbsp;&nbsp;&nbsp;&nbsp;- saveableInfo</option>
 	
 	
 	
@@ -85,7 +79,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Datapoints">Datapoints</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Synchronization">Synchronization</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Synchronisation">Synchronisation</a></span></li>
 	
 </ul></li>
 
@@ -99,6 +93,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/feedId">feedId</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isNew">isNew</a></span></li>
+	
 </ul></li>
 
 
@@ -107,19 +103,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteFromCosm">deleteFromCosm</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetch">fetch</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isNew">isNew</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parse:">parse:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resourceURLString">resourceURLString</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save">save</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveableInfo">saveableInfo</a></span></li>
 	
 </ul></li>
 
@@ -158,88 +146,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>An Objective-C representation of a Cosm datastream which can interact with Cosm.</p>
-
-<p>There are two main properties of a COSMDatastreamModel: a NSMutableDictionary called info which contains information relative to the datastream, and a <a href="../Classes/COSMDatapointCollection.html">COSMDatapointCollection</a> which contains the datastreams datapoints in the for of COSMDatapointModels.</p>
-
-<p>A COSMDatastreamModel may be fetched, saved or deleted from Cosm. Also an existing COSMDatastreamModel may recieve live updates from Cosm by subscribing to updates. Updates will recieved from Cosm internally by using a web socket connection.</p>
-
-<p>Successful or unsuccessful <a href="#//api/name/fetch">fetch</a>, <a href="#//api/name/save">save</a> and deleted requests will notify a COSMDatastreamModel delegate object by using the <a href="../Protocols/COSMModelDelegate.html">COSMModelDelegate</a> protocol. In addition to this a COSMDatastreamModel delegate object may be notified of succesful, unsuccesful or update events when the COSMDatastreamModel attempts to subscribe or is subscribed to Cosm via the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol.</p>
-
-<h2>Retreving a COSMDatastreamModel from Cosm.</h2>
-
-<p>A COSMDatastreamModel can retreieved by providing a <a href="#//api/name/feedId">feedId</a>, adding the datastreams &lsquo;id&rsquo; key to the info dictionary and calling <a href="#//api/name/fetch">fetch</a>. For example:</p>
-
-<pre><code>// Create a new datastream model
-COSMDatastreamModel *myDatastream = [[COSMDatastreamModel alloc] init];
-
-// Set the datastream's id
-[myDatastream setValue:@"Temperture" forKey:@"id"];
-
-// Also add the datastream parent feed id
-myDatastream.feedId = 100;
-
-// Finally, fetch the datastream from Cosm
-[myDatastream fetch];
-
-// ...
-// Later, after feed has called `modelDidFetch:` on its delegate
-NSString *currentValue = [myDatastream.info valueForKeyPath:@"current_value"];
-</code></pre>
-
-<h2>Retreving live updates of a COSMDatastreamModel from Cosm.</h2>
-
-<p>A COSMDatastreamModel may be updated with live updates from Cosm by subscribing the COSMDatastreamModel to Cosm.</p>
-
-<p>When subscribing a COSMDatastreamModel it should be providing a delegate conforming to the COSMDatastreamModel which will be notified when the subscribe request is successful via <code>modelDidSubscribe:</code>, when the subscribe request is unsuccessful or the socket connection drop via <code>modelDidUnsubscribe:withError:</code> or when it recieves an update via <code>modelUpdatedViaSubscription:</code>. For example, after COSMDatastreamModel has been fetched* it can be subscribed to update a UILabel with current changes:</p>
-
-<p><em>*It is not nessicary to fetch the COSMDatastreamModel first, however without doing so there will be no information about the datastream until it is next changed on Cosm.</em></p>
-
-<pre><code>// 0
-- (IBAction)subscribeTouched:(id)sender {
-   myDatastream.delegate = self;
-   [myDatastream subscribe];
-}
-
-- (void)modelUpdatedViaSubscription:(COSMModel *)model {
-   myLabel.text = [myDatastream.info valueForKeyPath:@"current_value"];
-}
-
-- (void)modelDidSubscribe:(COSMModel *)model {
-    NSLog(@"Web socket connected, now recieving live changes to datastream");
-}
-
-- (void)modelDidUnsubscribe:(COSMModel *)model withError:(NSError *)error;
-    NSLog("Web socket disconnected...");
-    if (error) {
-        NSLog(@"...because something went wrong");
-    } else {
-        NSLog(@"...because we successfully unsubscribed");
-    }
-}
-</code></pre>
-
-<h2>Create a new COSMDatastreamModel and <a href="#//api/name/save">save</a> it to Cosm.</h2>
-
-<p>A new datastream can be created and saved to Cosm using the <a href="#//api/name/save">save</a> method.</p>
-
-<p>Internally, COSMDatastreamModel will check to see if it has a valid id in its info dictionary before decideding if it should use a POST or PUT request.</p>
-
-<pre><code>// Create a new datastream model
-COSMDatastreamModel *myDatastream = [[COSMDatastreamModel alloc] init];
-
-// Set the id
-[myDatastream.info setValue:@"SoundLevel" forKey:@"id"];
-
-// Set private
-[myDatastream.info setValue:@"true" forKey:@"private"];
-
-// Add some tags
-[myDatastream.info setValue:myTagsArray forKey:@"private"];
-
-// Save
-[myDatastream save];
-</code></pre>
+						<p>COSMDatastreamModel is the representation of a datastream on Cosm. It can fetched, saved, be deleted, subscribed and unsubscribed from Cosm.</p>
 					</div>
 					
 					
@@ -258,7 +165,7 @@ COSMDatastreamModel *myDatastream = [[COSMDatastreamModel alloc] init];
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/feedId">&nbsp;&nbsp;feedId</a></code>
-		
+		<span class="tooltip"><p>Cosm&rsquo;s id for this datastream&rsquo;s parent feed.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -273,7 +180,7 @@ COSMDatastreamModel *myDatastream = [[COSMDatastreamModel alloc] init];
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/datapointCollection">&nbsp;&nbsp;datapointCollection</a></code>
-		
+		<span class="tooltip"><p>Container for the datastreams datapoint</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -281,68 +188,37 @@ COSMDatastreamModel *myDatastream = [[COSMDatastreamModel alloc] init];
 						</ul>
 						
 						
-						<a title="Synchronization" name="task_Synchronization"></a>
-						<h3 class="subsubtitle task-title">Synchronization</h3>
+						<a title="Synchronisation" name="task_Synchronisation"></a>
+						<h3 class="subsubtitle task-title">Synchronisation</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fetch">&ndash;&nbsp;fetch</a></code>
-		
+		<span class="tooltip"><p>Fetches the datastream from Cosm. Before fetching the datastream much have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/save">&ndash;&nbsp;save</a></code>
-		
+		<span class="tooltip"><p>Saves the datastream to Cosm. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/parse:">&ndash;&nbsp;parse:</a></code>
-		<span class="tooltip"><p>Parses any responce JSON into models <a href="#//api/name/info">info</a> object and or any collection the model has.</p></span>
+		<code><a href="#//api/name/deleteFromCosm">&ndash;&nbsp;deleteFromCosm</a></code>
+		<span class="tooltip"><p>Deletes the datastream from Cosm. Before deleting the datastream must have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set.The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol and the models flag isDeletedFromCosm will be set to true.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/saveableInfo">&ndash;&nbsp;saveableInfo</a></code>
-		<span class="tooltip"><p>returns the info dictionary without any references
-to any datapoints, so that the COSMDatastreamModel
-and <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> cannot make edits to any datapoints</p></span>
+		<code><a href="#//api/name/isNew">&nbsp;&nbsp;isNew</a></code>
+		<span class="tooltip"><p>Determins, or is a flag which indicates, if the model exsits on Cosm.</p></span>
 	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/isNew">&ndash;&nbsp;isNew</a></code>
-		<span class="tooltip"><p>Determins if the model exsits on Cosm. Normally by identifiying if it has an id.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/resourceURLString">&ndash;&nbsp;resourceURLString</a></code>
-		<span class="tooltip"><p>Returns the model&rsquo;s resource URL path.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
-		
-	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -362,11 +238,109 @@ and <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> cannot make edits 
 	<h3 class="subsubtitle method-title">datapointCollection</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Container for the datastreams datapoint</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) COSMDatapointCollection *datapointCollection</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMDatastreamModel.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/feedId" title="feedId"></a>
 	<h3 class="subsubtitle method-title">feedId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cosm&rsquo;s id for this datastream&rsquo;s parent feed.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property NSUInteger feedId</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>When initalising a COSMDatastreamModel directly the feedId is required to access the correct resource on Cosm&rsquo;s web service.  Using <a href="#//api/name/save">save</a>, <a href="#//api/name/fetch">fetch</a> or <a href="#//api/name/deleteFromCosm">deleteFromCosm</a> without the feedId will notify the model&rsquo;s delegate of failure via the <a href="../Protocols/COSMModelDelegate.html">COSMModelDelegate</a> protocol.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMDatastreamModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isNew" title="isNew"></a>
+	<h3 class="subsubtitle method-title">isNew</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Determins, or is a flag which indicates, if the model exsits on Cosm.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property BOOL isNew</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Used internally to decide on POST or PUT request when save is called for feeds and datastreams.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMModel.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -382,31 +356,60 @@ and <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> cannot make edits 
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/deleteFromCosm" title="deleteFromCosm"></a>
+	<h3 class="subsubtitle method-title">deleteFromCosm</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Deletes the datastream from Cosm. Before deleting the datastream must have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set.The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol and the models flag isDeletedFromCosm will be set to true.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)deleteFromCosm</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Protocols/COSMModelDelegate.html">COSMModelDelegate</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMDatastreamModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/fetch" title="fetch"></a>
 	<h3 class="subsubtitle method-title">fetch</h3>
 	
 	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/init" title="init"></a>
-	<h3 class="subsubtitle method-title">init</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/isNew" title="isNew"></a>
-	<h3 class="subsubtitle method-title">isNew</h3>
-	
-	
 	
 	<div class="method-subsection brief-description">
-		<p>Determins if the model exsits on Cosm. Normally by identifiying if it has an id.</p>
+		<p>Fetches the datastream from Cosm. Before fetching the datastream much have an <code>id</code> key in it&rsquo;s info dictionary and have it&rsquo;s <a href="#//api/name/feedId">feedId</a> set. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (BOOL)isNew</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)fetch</code></div>
 	
 	
 	
@@ -415,98 +418,24 @@ and <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> cannot make edits 
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Used internally to decide on POST or PUT request when save is called.</p>
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Protocols/COSMModelDelegate.html">COSMModelDelegate</a></p></code></li>
+			
+		</ul>
 	</div>
-	
-	
-	
-	
 	
 	
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">COSMModel.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/parse:" title="parse:"></a>
-	<h3 class="subsubtitle method-title">parse:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Parses any responce JSON into models <a href="#//api/name/info">info</a> object and or any collection the model has.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (void)parse:(id)<em>JSON</em></code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Should not need to be called directly. Used internally to parse responces from fetch, save, delete and subscribe requests.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">COSMModel.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/resourceURLString" title="resourceURLString"></a>
-	<h3 class="subsubtitle method-title">resourceURLString</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns the model&rsquo;s resource URL path.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (NSString *)resourceURLString</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Should not need to be called directly. Used internally to create the request URL string for any fetch, save, delete and subscribe requests.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">COSMModel.h</code><br />
+		<code class="declared-in-ref">COSMDatastreamModel.h</code><br />
 	</div>				
 	
 	
@@ -517,22 +446,13 @@ and <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> cannot make edits 
 	<h3 class="subsubtitle method-title">save</h3>
 	
 	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/saveableInfo" title="saveableInfo"></a>
-	<h3 class="subsubtitle method-title">saveableInfo</h3>
-	
-	
 	
 	<div class="method-subsection brief-description">
-		<p>returns the info dictionary without any references
-to any datapoints, so that the COSMDatastreamModel
-and <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> cannot make edits to any datapoints</p>
+		<p>Saves the datastream to Cosm. The result of the operation will be notified to the model&rsquo;s delegate using the COSModelDelegate protocol.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (NSMutableDictionary *)saveableInfo</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)save</code></div>
 	
 	
 	
@@ -544,6 +464,15 @@ and <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> cannot make edits 
 	
 	
 	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Protocols/COSMModelDelegate.html">COSMModelDelegate</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -568,7 +497,7 @@ and <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> cannot make edits 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 COSM Ltd.. All rights reserved. (Last updated: 2013-03-01)</span><br />
+						<p><span class="copyright">&copy; 2013 COSM Ltd.. All rights reserved. (Last updated: 2013-03-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

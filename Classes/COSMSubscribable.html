@@ -42,14 +42,6 @@
 	
 	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
 	
-	<option value="//api/name/isSubscribed">&nbsp;&nbsp;&nbsp;&nbsp;isSubscribed</option>
-	
-	<option value="//api/name/socketConnection">&nbsp;&nbsp;&nbsp;&nbsp;socketConnection</option>
-	
-	<option value="//api/name/subscribeToken">&nbsp;&nbsp;&nbsp;&nbsp;subscribeToken</option>
-	
-	<option value="//api/name/unsubscribeToken">&nbsp;&nbsp;&nbsp;&nbsp;unsubscribeToken</option>
-	
 	
 	
 	
@@ -57,19 +49,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/dealloc">&nbsp;&nbsp;&nbsp;&nbsp;- dealloc</option>
-	
 	<option value="//api/name/subscribe">&nbsp;&nbsp;&nbsp;&nbsp;- subscribe</option>
 	
 	<option value="//api/name/unsubscribe">&nbsp;&nbsp;&nbsp;&nbsp;- unsubscribe</option>
-	
-	<option value="//api/name/webSocket:didCloseWithCode:reason:wasClean:">&nbsp;&nbsp;&nbsp;&nbsp;- webSocket:didCloseWithCode:reason:wasClean:</option>
-	
-	<option value="//api/name/webSocket:didFailWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- webSocket:didFailWithError:</option>
-	
-	<option value="//api/name/webSocket:didReceiveMessage:">&nbsp;&nbsp;&nbsp;&nbsp;- webSocket:didReceiveMessage:</option>
-	
-	<option value="//api/name/webSocketDidOpen:">&nbsp;&nbsp;&nbsp;&nbsp;- webSocketDidOpen:</option>
 	
 	
 	
@@ -91,8 +73,6 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Socket Connection">Socket Connection</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Extension Methods">Extension Methods</a></span></li>
-	
 </ul></li>
 
 
@@ -103,14 +83,6 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isSubscribed">isSubscribed</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socketConnection">socketConnection</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subscribeToken">subscribeToken</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unsubscribeToken">unsubscribeToken</a></span></li>
-	
 </ul></li>
 
 
@@ -119,19 +91,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dealloc">dealloc</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subscribe">subscribe</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unsubscribe">unsubscribe</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/webSocket:didCloseWithCode:reason:wasClean:">webSocket:didCloseWithCode:reason:wasClean:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/webSocket:didFailWithError:">webSocket:didFailWithError:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/webSocket:didReceiveMessage:">webSocket:didReceiveMessage:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/webSocketDidOpen:">webSocketDidOpen:</a></span></li>
 	
 </ul></li>
 
@@ -173,9 +135,9 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>  COSMSubscribable is used by COSMFeedModels and COSMDatastreamModels so they may <a href="#//api/name/subscribe">subscribe</a> to live updates from Cosm via web socket connection.</p>
+						<p>COSMSubscribable, used by <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> and <a href="../Classes/COSMDatastreamModel.html">COSMDatastreamModel</a>, is a base class which allows the model to <a href="#//api/name/subscribe">subscribe</a> to live updates from Cosm via a web socket connection.</p>
 
-<p>When a COSMFeedModels or COSMDatastreamModels is subscribed Cosm its own data and child collections we be repopulated with data whenever they are change on Cosm. When a model recieves an update triggered by Cosm its <a href="#//api/name/delegate">delegate</a> will be notified by the <code>modelUpdatedViaSubscription:</code> method.</p><div class="warning"><p><strong>Warning:</strong> <em>Important:</em> Web socket connection are not allow on many mobile networks providers. If the device is running on a mobile connection and attempts to <a href="#//api/name/subscribe">subscribe</a>, the <code>modelDidUnsubscribe:withError:</code> may be called imeditaly or after a few seconds.</p></div>
+<p>When a <a href="../Classes/COSMFeedModel.html">COSMFeedModel</a> or <a href="../Classes/COSMDatastreamModel.html">COSMDatastreamModel</a> is subscribed Cosm its own data and child collections we be repopulated with data whenever they are change on Cosm. When a model recieves an update triggered by Cosm its <a href="#//api/name/delegate">delegate</a> will be notified by the <code>modelUpdatedViaSubscription:</code> method.</p><div class="warning"><p><strong>Warning:</strong> <em>Important:</em> Web socket connection are not allow on many mobile networks providers. If the device is running on a mobile connection and attempts to <a href="#//api/name/subscribe">subscribe</a>, the <code>modelDidUnsubscribe:withError:</code> may be called imeditaly or after a few seconds.</p></div>
 					</div>
 					
 					
@@ -194,7 +156,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
-		<span class="tooltip"><p>Delegate object which will be notified with the result of any fetch, save or delete requests.</p></span>
+		<span class="tooltip"><p>Delegate object which will be notified subscription, unsubscription and updates to a model which happened via a web socket connection to Cosm.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -208,96 +170,17 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/isSubscribed">&nbsp;&nbsp;isSubscribed</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/subscribe">&ndash;&nbsp;subscribe</a></code>
-		
+		<span class="tooltip"><p>Subscribes the model to Cosm. If attempt to subscribe fails a <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol. Once a model is subscribe it will be updated automatically when the relevant feed or datastream is updated on Cosm</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/unsubscribe">&ndash;&nbsp;unsubscribe</a></code>
-		
+		<span class="tooltip"><p>Unsubscribes the model to Cosm. If attempt to un<a href="#//api/name/subscribe">subscribe</a>  was intentional and happened without error the <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol but the error object will be <code>nil</code>.</p></span>
 	</span>
 	
-	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/dealloc">&ndash;&nbsp;dealloc</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/webSocket:didReceiveMessage:">&ndash;&nbsp;webSocket:didReceiveMessage:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/webSocketDidOpen:">&ndash;&nbsp;webSocketDidOpen:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/webSocket:didFailWithError:">&ndash;&nbsp;webSocket:didFailWithError:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/webSocket:didCloseWithCode:reason:wasClean:">&ndash;&nbsp;webSocket:didCloseWithCode:reason:wasClean:</a></code>
-		
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						<a title="Extension Methods" name="task_Extension Methods"></a>
-						<h3 class="subsubtitle task-title">Extension Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/socketConnection">&nbsp;&nbsp;socketConnection</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/subscribeToken">&nbsp;&nbsp;subscribeToken</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/unsubscribeToken">&nbsp;&nbsp;unsubscribeToken</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -319,7 +202,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Delegate object which will be notified with the result of any fetch, save or delete requests.</p>
+		<p>Delegate object which will be notified subscription, unsubscription and updates to a model which happened via a web socket connection to Cosm.</p>
 	</div>		
 	
 	
@@ -340,36 +223,8 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">COSMModel.h</code><br />
+		<code class="declared-in-ref">COSMSubscribable.h</code><br />
 	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/isSubscribed" title="isSubscribed"></a>
-	<h3 class="subsubtitle method-title">isSubscribed</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/socketConnection" title="socketConnection"></a>
-	<h3 class="subsubtitle method-title">socketConnection</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/subscribeToken" title="subscribeToken"></a>
-	<h3 class="subsubtitle method-title">subscribeToken</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/unsubscribeToken" title="unsubscribeToken"></a>
-	<h3 class="subsubtitle method-title">unsubscribeToken</h3>
 	
 	
 </div>
@@ -385,15 +240,44 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/dealloc" title="dealloc"></a>
-	<h3 class="subsubtitle method-title">dealloc</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/subscribe" title="subscribe"></a>
 	<h3 class="subsubtitle method-title">subscribe</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Subscribes the model to Cosm. If attempt to subscribe fails a <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol. Once a model is subscribe it will be updated automatically when the relevant feed or datastream is updated on Cosm</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)subscribe</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMSubscribable.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -403,32 +287,40 @@
 	<h3 class="subsubtitle method-title">unsubscribe</h3>
 	
 	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/webSocket:didCloseWithCode:reason:wasClean:" title="webSocket:didCloseWithCode:reason:wasClean:"></a>
-	<h3 class="subsubtitle method-title">webSocket:didCloseWithCode:reason:wasClean:</h3>
+	
+	<div class="method-subsection brief-description">
+		<p>Unsubscribes the model to Cosm. If attempt to un<a href="#//api/name/subscribe">subscribe</a>  was intentional and happened without error the <a href="#//api/name/delegate">delegate</a> will be notified via the <code>modelDidUnsubscribe:withError:</code> method of the <a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a> protocol but the error object will be <code>nil</code>.</p>
+	</div>		
 	
 	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/webSocket:didFailWithError:" title="webSocket:didFailWithError:"></a>
-	<h3 class="subsubtitle method-title">webSocket:didFailWithError:</h3>
+	<div class="method-subsection method-declaration"><code>- (void)unsubscribe</code></div>
 	
 	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/webSocket:didReceiveMessage:" title="webSocket:didReceiveMessage:"></a>
-	<h3 class="subsubtitle method-title">webSocket:didReceiveMessage:</h3>
 	
 	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/webSocketDidOpen:" title="webSocketDidOpen:"></a>
-	<h3 class="subsubtitle method-title">webSocketDidOpen:</h3>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Protocols/COSMSubscribableDelegate.html">COSMSubscribableDelegate</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMSubscribable.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -446,7 +338,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 COSM Ltd.. All rights reserved. (Last updated: 2013-03-01)</span><br />
+						<p><span class="copyright">&copy; 2013 COSM Ltd.. All rights reserved. (Last updated: 2013-03-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

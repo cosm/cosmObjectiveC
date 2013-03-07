@@ -146,14 +146,14 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/modelDidFetch:">&ndash;&nbsp;modelDidFetch:</a></code>
-		
+		<span class="tooltip"><p>Tells the delegate that the fetch was successful.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/modelFailedToFetch:withError:json:">&ndash;&nbsp;modelFailedToFetch:withError:json:</a></code>
-		
+		<span class="tooltip"><p>Tells the delegate that the fetch failed.</p></span>
 	</span>
 	
 	
@@ -168,14 +168,14 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/modelDidSave:">&ndash;&nbsp;modelDidSave:</a></code>
-		
+		<span class="tooltip"><p>Tells the delegate that the save was successful.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/modelFailedToSave:withError:json:">&ndash;&nbsp;modelFailedToSave:withError:json:</a></code>
-		
+		<span class="tooltip"><p>Tells the delegate that the save failed.</p></span>
 	</span>
 	
 	
@@ -190,14 +190,14 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/modelDidDeleteFromCOSM:">&ndash;&nbsp;modelDidDeleteFromCOSM:</a></code>
-		
+		<span class="tooltip"><p>Tells the delegate that the delete was successful.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/modelFailedToDeleteFromCOSM:withError:json:">&ndash;&nbsp;modelFailedToDeleteFromCOSM:withError:json:</a></code>
-		
+		<span class="tooltip"><p>Tells the delegate that the delete was failed.</p></span>
 	</span>
 	
 	
@@ -223,11 +223,95 @@
 	<h3 class="subsubtitle method-title">modelDidDeleteFromCOSM:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Tells the delegate that the delete was successful.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)modelDidDeleteFromCOSM:(COSMModel *)<em>model</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>model</em></dt>
+			<dd><p>Reference to the model which was deleted from Cosm</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error or <code>nil</code></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>json</em></dt>
+			<dd><p>JSON representation of the error, or a JSON responce from Cosm, or <code>nil</code></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMModelDelegate.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/modelDidFetch:" title="modelDidFetch:"></a>
 	<h3 class="subsubtitle method-title">modelDidFetch:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Tells the delegate that the fetch was successful.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)modelDidFetch:(COSMModel *)<em>model</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>model</em></dt>
+			<dd><p>Reference to the model which was fetch</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMModelDelegate.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -237,11 +321,95 @@
 	<h3 class="subsubtitle method-title">modelDidSave:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Tells the delegate that the save was successful.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)modelDidSave:(COSMModel *)<em>model</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>model</em></dt>
+			<dd><p>Reference to the model which was saved</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMModelDelegate.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/modelFailedToDeleteFromCOSM:withError:json:" title="modelFailedToDeleteFromCOSM:withError:json:"></a>
 	<h3 class="subsubtitle method-title">modelFailedToDeleteFromCOSM:withError:json:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Tells the delegate that the delete was failed.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)modelFailedToDeleteFromCOSM:(COSMModel *)<em>model</em> withError:(NSError *)<em>error</em> json:(id)<em>JSON</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>model</em></dt>
+			<dd><p>Reference to the model which attempted to delete from Cosm</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error or <code>nil</code></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>json</em></dt>
+			<dd><p>JSON representation of the error, or a JSON responce from Cosm, or <code>nil</code></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMModelDelegate.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -251,11 +419,105 @@
 	<h3 class="subsubtitle method-title">modelFailedToFetch:withError:json:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Tells the delegate that the fetch failed.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)modelFailedToFetch:(COSMModel *)<em>model</em> withError:(NSError *)<em>error</em> json:(id)<em>JSON</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>model</em></dt>
+			<dd><p>Reference to the model which attempted to fetch</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error or <code>nil</code></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>json</em></dt>
+			<dd><p>JSON representation of the error, or a JSON responce from Cosm, or <code>nil</code></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMModelDelegate.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/modelFailedToSave:withError:json:" title="modelFailedToSave:withError:json:"></a>
 	<h3 class="subsubtitle method-title">modelFailedToSave:withError:json:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Tells the delegate that the save failed.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)modelFailedToSave:(COSMModel *)<em>model</em> withError:(NSError *)<em>error</em> json:(id)<em>JSON</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>model</em></dt>
+			<dd><p>Reference to the model which attempted to saved</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error or <code>nil</code></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>json</em></dt>
+			<dd><p>JSON representation of the error, or a JSON responce from Cosm, or <code>nil</code></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">COSMModelDelegate.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -273,7 +535,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 COSM Ltd.. All rights reserved. (Last updated: 2013-03-01)</span><br />
+						<p><span class="copyright">&copy; 2013 COSM Ltd.. All rights reserved. (Last updated: 2013-03-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
